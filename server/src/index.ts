@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
+import router from "./routes/chat.routes";
 
 dotenv.config();
 
@@ -49,6 +50,9 @@ app.use(
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({ message: "API is running 🚀" });
 });
+
+// ✅ Routes
+app.use("/api/", router);
 
 //404 handler
 app.use((req, res) => {
